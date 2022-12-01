@@ -20,7 +20,7 @@ function sequenceTasks(tasks: any[]) {
  * @param tempFilePaths 本地临时路径 []
  */
 export const uploadFile = (tempFilePaths: any) => {
-      if (app.uploadFile) {
+      if (!app.uploadFile || app.uploadFile == "") {
             throw new Error(`
 缺少上传接口地址
 app.ts | app.js 中 APP 中配置

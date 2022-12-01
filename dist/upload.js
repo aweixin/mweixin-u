@@ -16,7 +16,7 @@ function sequenceTasks(tasks) {
     return promise;
 }
 const uploadFile = (tempFilePaths) => {
-    if (app.uploadFile) {
+    if (!app.uploadFile || app.uploadFile == "") {
         throw new Error(`
 缺少上传接口地址
 app.ts | app.js 中 APP 中配置

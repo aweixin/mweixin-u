@@ -35,7 +35,7 @@ const request = (url: string, options: optionsType) => {
  * @param options
  * @param header
  */
-const get = (url: any, options = {}, header = {}) => {
+export const get = (url: any, options = {}, header = {}) => {
       return request(url, { method: "GET", data: options, header: header })
 }
 /**
@@ -44,8 +44,6 @@ const get = (url: any, options = {}, header = {}) => {
  * @param options
  * @param header
  */
-const post = (url: any, options = {}, header = {}) => {
+export const post = (url: any, options = {}, header = {}) => {
       return request(url, { method: "POST", data: options, header: header })
 }
-
-export { get, post }

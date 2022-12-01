@@ -6,41 +6,13 @@
  * @Description:微信工具类
  */
 
-import { get, post } from "./server"
-import {
-      formatTime,
-      gourl,
-      getRect,
-      get_html,
-      getsys,
-      setsys,
-      delsys,
-      tapinfo,
-      checkFullSucreen,
-      alert,
-      msg,
-      confirm,
-      previewImage,
-      requestSubscribeMessage,
-      openDocument,
-} from "./util"
+// 请求类
+import * as Server from "./server"
+// 工具类
+import * as Utils from "./utils"
+// 上传类
+import * as Upload from "./upload"
 
-export {
-      post,
-      get,
-      formatTime,
-      gourl,
-      getRect,
-      get_html,
-      getsys,
-      setsys,
-      delsys,
-      tapinfo,
-      checkFullSucreen,
-      alert,
-      msg,
-      confirm,
-      previewImage,
-      requestSubscribeMessage,
-      openDocument,
-}
+console.warn("使用上传类，请注意上传接口配置")
+
+console.log(Server, Upload, Utils)

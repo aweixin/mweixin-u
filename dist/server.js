@@ -1,14 +1,17 @@
-var request = function (url, options) {
-    return new Promise(function (resolve, reject) {
-        var header = {
-            "content-type": "application/json;charset=utf-8"
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.post = exports.get = void 0;
+const request = (url, options) => {
+    return new Promise((resolve, reject) => {
+        let header = {
+            "content-type": "application/json;charset=utf-8",
         };
         wx.request({
             url: url,
             method: options.method,
             data: options.method === "GET" ? options.data : JSON.stringify(options.data),
             header: Object.assign(header, options.header),
-            success: function (request) {
+            success(request) {
                 if (request.statusCode === 200) {
                     resolve(request.data);
                 }
@@ -17,33 +20,18 @@ var request = function (url, options) {
                     reject(request.data);
                 }
             },
-            fail: function (error) {
+            fail(error) {
                 console.log(error.data);
                 reject(error.data);
-            }
+            },
         });
     });
 };
-/**
- * get 请求
- * @param url
- * @param options
- * @param header
- */
-var get = function (url, options, header) {
-    if (options === void 0) { options = {}; }
-    if (header === void 0) { header = {}; }
+const get = (url, options = {}, header = {}) => {
     return request(url, { method: "GET", data: options, header: header });
 };
-/**
- * post 请求
- * @param url
- * @param options
- * @param header
- */
-var post = function (url, options, header) {
-    if (options === void 0) { options = {}; }
-    if (header === void 0) { header = {}; }
+exports.get = get;
+const post = (url, options = {}, header = {}) => {
     return request(url, { method: "POST", data: options, header: header });
 };
-export { get, post };
+exports.post = post;

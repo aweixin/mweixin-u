@@ -15,4 +15,4 @@ import * as Upload from "./upload"
 
 console.warn("使用上传类，请注意上传接口配置")
 
-console.log(Server, Upload, Utils)
+export { Upload, Server, Utils }

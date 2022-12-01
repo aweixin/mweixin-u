@@ -23,8 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Utils = exports.Server = exports.Upload = void 0;
 const Server = __importStar(require("./server"));
+exports.Server = Server;
 const Utils = __importStar(require("./utils"));
+exports.Utils = Utils;
 const Upload = __importStar(require("./upload"));
+exports.Upload = Upload;
 console.warn("使用上传类，请注意上传接口配置");
-console.log(Server, Upload, Utils);

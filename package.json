@@ -1,5 +1,5 @@
 {
-      "name": "mweixin-u",
+      "name": "m-weixin-utils",
       "version": "1.0.2",
       "description": "微信工具库",
       "main": "dist/index.js",
@@ -10,9 +10,12 @@
             "dist"
       ],
       "keywords": [
-            "工具库"
+            "工具库",
+            "方法",
+            "微信小程序",
+            "引用库"
       ],
-	  "homepage": "https://github.com/ufologist/weapp-simple-storage#readme",
+      "homepage": "https://github.com/aweixin/mweixin-u",
       "author": "Mr.xu",
       "license": "ISC"
 }

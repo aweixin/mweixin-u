@@ -1,14 +1,14 @@
-## mweixin-u
+## m-weixin-utils
 
 微信小程序常用方法封装
 
 ### Installation
 ```cmd
-npm i mweixin-u
+npm i m-weixin-utils
 ```
 ### Example usage
 ```js
-import {getsys} from 'mweixin-u';
+import {getsys} from 'm-weixin-utils';
 
 Page({
   onLoad(){

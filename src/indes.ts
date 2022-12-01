@@ -13,3 +13,11 @@
 export const getsys = (key: string) => {
       return key
 }
+/**
+ *设置本地存储
+ * @param {string} key
+ * @param {*} value
+ */
+const setsys = (key: string, value: any) => {
+      window.localStorage.setItem(key, value)
+}

@@ -10,7 +10,7 @@
  * @param {string} key
  * @return {*}
  */
-export const getsys = (key: string) => {
+const getsys = (key: string) => {
       return key
 }
 /**
@@ -21,3 +21,5 @@ export const getsys = (key: string) => {
 const setsys = (key: string, value: any) => {
       window.localStorage.setItem(key, value)
 }
+
+export { setsys, getsys }

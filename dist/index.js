@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getsys = void 0;
 /*
  * @Author: Mr.xu
  * @Date: 2022-12-01 14:36:24
@@ -13,7 +10,15 @@ exports.getsys = void 0;
  * @param {string} key
  * @return {*}
  */
-const getsys = (key) => {
+var getsys = function (key) {
     return key;
 };
-exports.getsys = getsys;
+/**
+ *设置本地存储
+ * @param {string} key
+ * @param {*} value
+ */
+var setsys = function (key, value) {
+    window.localStorage.setItem(key, value);
+};
+export { setsys, getsys };

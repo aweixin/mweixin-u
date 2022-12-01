@@ -1,10 +1,11 @@
-export const formatTime = (date: Date) => {
-      const year = date.getFullYear()
-      const month = date.getMonth() + 1
-      const day = date.getDate()
-      const hour = date.getHours()
-      const minute = date.getMinutes()
-      const second = date.getSeconds()
+export const formatTime = (date: string) => {
+      const current_date = new Date(date.replace(/-/g, "/"))
+      const year = current_date.getFullYear()
+      const month = current_date.getMonth() + 1
+      const day = current_date.getDate()
+      const hour = current_date.getHours()
+      const minute = current_date.getMinutes()
+      const second = current_date.getSeconds()
 
       return [year, month, day].map(formatNumber).join("/") + " " + [hour, minute, second].map(formatNumber).join(":")
 }

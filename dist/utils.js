@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
 const formatTime = (date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+    const current_date = new Date(date.replace(/-/g, "/"));
+    const year = current_date.getFullYear();
+    const month = current_date.getMonth() + 1;
+    const day = current_date.getDate();
+    const hour = current_date.getHours();
+    const minute = current_date.getMinutes();
+    const second = current_date.getSeconds();
     return [year, month, day].map(formatNumber).join("/") + " " + [hour, minute, second].map(formatNumber).join(":");
 };
 exports.formatTime = formatTime;

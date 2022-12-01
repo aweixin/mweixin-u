@@ -1,4 +1,4 @@
-export declare const formatTime: (date: Date) => string;
+export declare const formatTime: (date: string) => string;
 export declare const gourl: (path: string) => void;
 export declare const get_html: (data: any) => any;
 export declare const tapinfo: (e: any) => any;

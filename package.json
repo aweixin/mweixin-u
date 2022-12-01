@@ -1,6 +1,6 @@
 {
       "name": "m-weixin-utils",
-      "version": "1.0.13",
+      "version": "1.0.14",
       "description": "微信工具库",
       "main": "dist/index.js",
       "scripts": {

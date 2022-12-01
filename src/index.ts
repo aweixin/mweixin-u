@@ -7,8 +7,40 @@
  */
 
 import { get, post } from "./server"
-import * as Utils from "./util"
+import {
+      formatTime,
+      gourl,
+      getRect,
+      get_html,
+      getsys,
+      setsys,
+      delsys,
+      tapinfo,
+      checkFullSucreen,
+      alert,
+      msg,
+      confirm,
+      previewImage,
+      requestSubscribeMessage,
+      openDocument,
+} from "./util"
 
-console.log(getApp())
-
-export { post, get, Utils }
+export {
+      post,
+      get,
+      formatTime,
+      gourl,
+      getRect,
+      get_html,
+      getsys,
+      setsys,
+      delsys,
+      tapinfo,
+      checkFullSucreen,
+      alert,
+      msg,
+      confirm,
+      previewImage,
+      requestSubscribeMessage,
+      openDocument,
+}

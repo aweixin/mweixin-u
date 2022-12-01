@@ -6,11 +6,11 @@
 
 ### Installation
 ```cmd
-npmim-weixin-utils
+npm i m-weixin-utils
 ```
 ### Exampleusage
 ```js
-import{Server,Upload,Utils}from'm-weixin-utils';
+import { Server , Upload , Utils } from 'm-weixin-utils';
 
 Page({
   onLoad(){

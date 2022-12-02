@@ -1,3 +1,5 @@
+import moment from "moment"
+
 export const formatTime = (date: string) => {
       const current_date = new Date(date.replace(/-/g, "/"))
       const year = current_date.getFullYear()
@@ -171,12 +173,22 @@ export const confirm = (msg: string, opction?: opctionType) => {
 export const getsys = (key: string) => {
       return wx.getStorageSync(key)
 }
+
+interface expireDateType {
+      key: "years" | "quarters" | "months" | "weeks" | "days" | "hours" | "minutes" | "seconds"
+      value: number
+}
 /**
- * 设置本地存储
- * @param key
- * @param value
+ *设置本地存储
+ * @param {string} key
+ * @param {*} value
+ * @param {expireDateType} [expireDate]   过期时间 {key:days,value:1} 获取时间1天
  */
-export const setsys = (key: string, value: any) => {
+export const setsys = (key: string, value: any, expireDate?: expireDateType) => {
+      if (expireDate) {
+            let date = moment().add(expireDate.value, expireDate.key).format("YYYY-MM-DD HH:mm:ss")
+            wx.setStorageSync(key + "_expire", date)
+      }
       wx.setStorageSync(key, value)
 }
 /**
@@ -185,6 +197,17 @@ export const setsys = (key: string, value: any) => {
  */
 export const delsys = (key: string) => {
       wx.removeStorageSync(key)
+}
+/**
+ *删除已过期的数据
+ * @param {string} key
+ */
+export const delsys_expire = (key: string) => {
+      let data = getsys(key + "_expire")
+      if (moment(data).isBefore(moment())) {
+            delsys(key)
+            delsys(key + "_expire")
+      }
 }
 
 /**

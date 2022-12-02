@@ -23,5 +23,8 @@
       ],
       "homepage": "https://github.com/aweixin/mweixin-u",
       "author": "Mr.xu",
-      "license": "ISC"
+      "license": "ISC",
+      "dependencies": {
+            "moment": "^2.29.4"
+      }
 }

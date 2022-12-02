@@ -27,10 +27,22 @@ const request = (url, options) => {
         });
     });
 };
+/**
+ * get 请求
+ * @param url
+ * @param options
+ * @param header
+ */
 const get = (url, options = {}, header = {}) => {
     return request(url, { method: "GET", data: options, header: header });
 };
 exports.get = get;
+/**
+ * post 请求
+ * @param url
+ * @param options
+ * @param header
+ */
 const post = (url, options = {}, header = {}) => {
     return request(url, { method: "POST", data: options, header: header });
 };

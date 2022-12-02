@@ -10,6 +10,24 @@ const js_base64_1 = require("js-base64");
 const computeSignature = (accessKeySecret, canonicalString) => {
     return crypto_js_1.default.enc.Base64.stringify(crypto_js_1.default.HmacSHA1(canonicalString, accessKeySecret));
 };
+/**
+ * aliyunOss 阿里云oss
+ * @param filePath 文件路径
+ * @param {ossAuthInfoType} OssAuthInfo
+ * 示例：
+ * ```
+      aliyunOss(filePath,{
+            accessKeyId: string
+            accessKeySecret: string
+            bucket?: string
+            endpoint: string
+            filePath: string
+            host: string
+            region: string
+            stsToken: string
+      })
+ * ```
+ */
 const aliyunOss = (filePath, OssAuthInfo) => {
     const date = new Date();
     date.setHours(date.getHours() + 1);

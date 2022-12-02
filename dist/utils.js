@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
+exports.setClipboardData = exports.urlEncode = exports.checkUpdateVersion = exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
 const formatTime = (date) => {
     const current_date = new Date(date.replace(/-/g, "/"));
     const year = current_date.getFullYear();
@@ -100,6 +100,9 @@ const alert = (content) => {
 exports.alert = alert;
 const msg = (msg, icon, duration) => {
     return new Promise((_resolve) => {
+        if (msg.length > 7) {
+            icon = undefined;
+        }
         wx.showToast({
             title: msg,
             icon: icon ? icon : "none",
@@ -168,3 +171,54 @@ const openDocument = (url) => {
     });
 };
 exports.openDocument = openDocument;
+const checkUpdateVersion = () => {
+    console.log("checkUpdateVersion");
+    if (wx.canIUse("getUpdateManager")) {
+        const updateManager = wx.getUpdateManager();
+        updateManager.onCheckForUpdate(function (res) {
+            if (res.hasUpdate) {
+                updateManager.onUpdateReady(function () {
+                    updateManager.applyUpdate();
+                });
+                updateManager.onUpdateFailed(function () {
+                    wx.showModal({
+                        title: "已经有新版本喽~",
+                        content: "请您删除当前小程序，重新搜索打开哦~",
+                    });
+                });
+            }
+        });
+    }
+    else {
+        wx.showModal({
+            title: "溫馨提示",
+            content: "当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。",
+        });
+    }
+};
+exports.checkUpdateVersion = checkUpdateVersion;
+const urlEncode = (data = {}) => {
+    var _result = [];
+    for (var key in data) {
+        var value = data[key];
+        if (value.constructor == Array) {
+            value.forEach(function (_value) {
+                _result.push(key + "=" + _value);
+            });
+        }
+        else {
+            _result.push(key + "=" + value);
+        }
+    }
+    return _result.join("&");
+};
+exports.urlEncode = urlEncode;
+const setClipboardData = (data, title) => {
+    wx.setClipboardData({
+        data: data,
+        success() {
+            (0, exports.msg)(title || "复制成功", "success");
+        },
+    });
+};
+exports.setClipboardData = setClipboardData;

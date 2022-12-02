@@ -11,9 +11,15 @@
       ],
       "keywords": [
             "工具库",
-            "方法",
+            "上传类",
+            "请求类",
             "微信小程序",
-            "引用库"
+            "引用库",
+            "typescript",
+            "utils",
+            "weixin",
+            "upload",
+            "Server"
       ],
       "homepage": "https://github.com/aweixin/mweixin-u",
       "author": "Mr.xu",

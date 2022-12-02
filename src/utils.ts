@@ -125,6 +125,10 @@ export const alert = (content: string) => {
  */
 export const msg = (msg: string, icon?: "success" | "error", duration?: number) => {
       return new Promise((_resolve) => {
+            if (msg.length > 7) {
+                  icon = undefined
+            }
+
             wx.showToast({
                   title: msg,
                   icon: icon ? icon : "none",
@@ -226,6 +230,74 @@ export const openDocument = (url: string) => {
                               console.log("打开文档成功")
                         },
                   })
+            },
+      })
+}
+
+/**
+ * 检测当前的小程序
+ * 版本自动更新
+ */
+export const checkUpdateVersion = () => {
+      console.log("checkUpdateVersion")
+      //判断微信版本是否 兼容小程序更新机制API的使用
+      if (wx.canIUse("getUpdateManager")) {
+            //创建 UpdateManager 实例
+            const updateManager = wx.getUpdateManager()
+            //检测版本更新
+            updateManager.onCheckForUpdate(function (res) {
+                  // 请求完新版本信息的回调
+                  if (res.hasUpdate) {
+                        //监听小程序有版本更新事件
+                        updateManager.onUpdateReady(function () {
+                              //TODO 新的版本已经下载好，调用 applyUpdate 应用新版本并重启 （ 此处进行了自动更新操作）
+                              updateManager.applyUpdate()
+                        })
+                        updateManager.onUpdateFailed(function () {
+                              // 新版本下载失败
+                              wx.showModal({
+                                    title: "已经有新版本喽~",
+                                    content: "请您删除当前小程序，重新搜索打开哦~",
+                              })
+                        })
+                  }
+            })
+      } else {
+            //TODO 此时微信版本太低（一般而言版本都是支持的）
+            wx.showModal({
+                  title: "溫馨提示",
+                  content: "当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。",
+            })
+      }
+}
+/**
+ *对象转URL
+ */
+export const urlEncode = (data: object = {}) => {
+      var _result = []
+      for (var key in data) {
+            var value = data[key]
+            if (value.constructor == Array) {
+                  value.forEach(function (_value) {
+                        _result.push(key + "=" + _value)
+                  })
+            } else {
+                  _result.push(key + "=" + value)
+            }
+      }
+      return _result.join("&")
+}
+
+/**
+ * 复制内容
+ * @param {*} data 复制数据
+ * @param {*} title  提示内容
+ */
+export const setClipboardData = (data: string, title?: string) => {
+      wx.setClipboardData({
+            data: data,
+            success() {
+                  msg(title || "复制成功", "success")
             },
       })
 }

@@ -1,6 +1,6 @@
 ## m-weixin-utils
 
-微信小程序常用方法`上传`,`工具`,`请求`封装 ** [反馈错误/缺漏](https://github.com/aweixin/mweixin-u/issues/new) **
+简洁，高效，实用的微信小程序方法封装 ** [反馈错误/缺漏](https://github.com/aweixin/mweixin-u/issues/new) **
 
 
 
@@ -101,3 +101,14 @@ tmplIds模板ID列表
 
 ##### **openDocument(url:string)**
 url需要打开的文件地址
+
+##### **checkUpdateVersion()**
+检测当前的小程序 版本自动更新
+
+##### **urlEncode(data: object = {})**
+对象转URL
+
+##### **setClipboardData(data: string, title?: string)**
+data 复制内容  title 复制成功提示 默认 复制成功
+
+

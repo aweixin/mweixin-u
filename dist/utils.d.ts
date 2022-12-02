@@ -20,4 +20,7 @@ export declare const delsys: (key: string) => void;
 export declare const previewImage: (current: string, urls: string[]) => void;
 export declare const requestSubscribeMessage: (tmplIds: string[]) => Promise<unknown>;
 export declare const openDocument: (url: string) => void;
+export declare const checkUpdateVersion: () => void;
+export declare const urlEncode: (data?: object) => string;
+export declare const setClipboardData: (data: string, title?: string) => void;
 export {};

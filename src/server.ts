@@ -1,11 +1,18 @@
 interface optionsType {
-      method: "POST" | "GET"
+      method: "POST" | "GET" | "OPTIONS" | "HEAD" | "PUT" | "DELETE" | "TRACE" | "CONNECT"
       data: Object
       header?: Object
 }
 
+interface returnType {
+      code: number
+      data: any
+      msg: string
+      message: string
+}
+
 const request = (url: string, options: optionsType) => {
-      return new Promise((resolve, reject) => {
+      return new Promise<returnType>((resolve, reject) => {
             let header = {
                   "content-type": "application/json;charset=utf-8",
             }

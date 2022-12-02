@@ -30,7 +30,7 @@ export declare const alert: (content: string) => any;
  * @param msg 提示内容
  * @param icon success | error
  */
-export declare const msg: (msg: string, icon?: "success" | "error", duration?: number) => Promise<unknown>;
+export declare const msg: (msg: string, icon?: "success" | "error", duration?: number) => Promise<boolean>;
 interface opctionType {
     showCancel?: boolean;
     cancelText?: string;
@@ -75,7 +75,7 @@ export declare const previewImage: (current: string, urls: string[]) => void;
  * 订阅消息
  * @param {*} tmplIds 模板ids
  */
-export declare const requestSubscribeMessage: (tmplIds: string[]) => Promise<unknown>;
+export declare const requestSubscribeMessage: (tmplIds: string[]) => Promise<any>;
 /**
  * 打开文档
  * @param url

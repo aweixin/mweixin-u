@@ -12,7 +12,9 @@ import * as Server from "./server"
 import * as Utils from "./utils"
 // 上传类
 import * as Upload from "./upload"
+// 阿里云oss
+import { aliyunOss } from "./aliyunOss"
 
 console.warn("使用上传类，请注意上传接口配置")
 
-export { Upload, Server, Utils }
+export { Upload, Server, Utils, aliyunOss }

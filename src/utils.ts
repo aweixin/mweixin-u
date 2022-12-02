@@ -126,7 +126,7 @@ export const alert = (content: string) => {
  * @param icon success | error
  */
 export const msg = (msg: string, icon?: "success" | "error", duration?: number) => {
-      return new Promise((_resolve) => {
+      return new Promise<boolean>((_resolve) => {
             if (msg.length > 7) {
                   icon = undefined
             }
@@ -227,7 +227,7 @@ export const previewImage = (current: string, urls: string[]) => {
  * @param {*} tmplIds 模板ids
  */
 export const requestSubscribeMessage = (tmplIds: string[]) => {
-      return new Promise((resolve) => {
+      return new Promise<any>((resolve) => {
             console.log(`模板---------ids:${tmplIds}`)
             wx.requestSubscribeMessage({
                   tmplIds: tmplIds,

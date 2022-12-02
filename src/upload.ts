@@ -19,6 +19,7 @@ function sequenceTasks(tasks: any[]) {
  * 上传图片
  * @param tempFilePaths 本地临时路径 []
  */
+
 export const uploadFile = (tempFilePaths: any) => {
       if (!app.uploadFile || app.uploadFile == "") {
             throw new Error(`
@@ -28,7 +29,7 @@ uploadFile:https://www.weixin.com/upload
             `)
       }
 
-      return new Promise((uploadFileresolve) => {
+      return new Promise<string[]>((uploadFileresolve) => {
             var imgarr: string[] = [] //上传保存图片路径
             wx.showLoading({
                   title: "上传中",
@@ -99,7 +100,7 @@ uploadFile:https://www.weixin.com/upload
  * @return {*}
  */
 export const chooseImage = (_count?: number) => {
-      return new Promise((_resolve, _reject) => {
+      return new Promise<string[]>((_resolve, _reject) => {
             wx.chooseMedia({
                   count: _count ? _count : 1,
                   sizeType: ["original", "compressed"],
@@ -126,7 +127,7 @@ export const chooseImage = (_count?: number) => {
  * @return {*}
  */
 export const chooseMessageFile = (_count: number, _type?: "all" | "video" | "image" | "file" | undefined, _extension?: string[]) => {
-      return new Promise((_resolve) => {
+      return new Promise<string[]>((_resolve) => {
             wx.chooseMessageFile({
                   count: _count,
                   type: _type,

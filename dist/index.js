@@ -30,7 +30,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Utils = exports.Server = exports.Upload = void 0;
+exports.aliyunOss = exports.Utils = exports.Server = exports.Upload = void 0;
 // 请求类
 const Server = __importStar(require("./server"));
 exports.Server = Server;
@@ -40,4 +40,7 @@ exports.Utils = Utils;
 // 上传类
 const Upload = __importStar(require("./upload"));
 exports.Upload = Upload;
+// 阿里云oss
+const aliyunOss_1 = require("./aliyunOss");
+Object.defineProperty(exports, "aliyunOss", { enumerable: true, get: function () { return aliyunOss_1.aliyunOss; } });
 console.warn("使用上传类，请注意上传接口配置");

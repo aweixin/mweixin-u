@@ -15,8 +15,13 @@ interface opctionType {
 }
 export declare const confirm: (msg: string, opction?: opctionType) => any;
 export declare const getsys: (key: string) => any;
-export declare const setsys: (key: string, value: any) => void;
+interface expireDateType {
+    key: "years" | "quarters" | "months" | "weeks" | "days" | "hours" | "minutes" | "seconds";
+    value: number;
+}
+export declare const setsys: (key: string, value: any, expireDate?: expireDateType) => void;
 export declare const delsys: (key: string) => void;
+export declare const delsys_expire: (key: string) => void;
 export declare const previewImage: (current: string, urls: string[]) => void;
 export declare const requestSubscribeMessage: (tmplIds: string[]) => Promise<unknown>;
 export declare const openDocument: (url: string) => void;

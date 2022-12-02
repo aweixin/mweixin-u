@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setClipboardData = exports.urlEncode = exports.checkUpdateVersion = exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
+exports.setClipboardData = exports.urlEncode = exports.checkUpdateVersion = exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys_expire = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
+const moment_1 = __importDefault(require("moment"));
 const formatTime = (date) => {
     const current_date = new Date(date.replace(/-/g, "/"));
     const year = current_date.getFullYear();
@@ -129,7 +133,11 @@ const getsys = (key) => {
     return wx.getStorageSync(key);
 };
 exports.getsys = getsys;
-const setsys = (key, value) => {
+const setsys = (key, value, expireDate) => {
+    if (expireDate) {
+        let date = (0, moment_1.default)().add(expireDate.value, expireDate.key).format("YYYY-MM-DD HH:mm:ss");
+        wx.setStorageSync(key + "_expire", date);
+    }
     wx.setStorageSync(key, value);
 };
 exports.setsys = setsys;
@@ -137,6 +145,14 @@ const delsys = (key) => {
     wx.removeStorageSync(key);
 };
 exports.delsys = delsys;
+const delsys_expire = (key) => {
+    let data = (0, exports.getsys)(key + "_expire");
+    if ((0, moment_1.default)(data).isBefore((0, moment_1.default)())) {
+        (0, exports.delsys)(key);
+        (0, exports.delsys)(key + "_expire");
+    }
+};
+exports.delsys_expire = delsys_expire;
 const previewImage = (current, urls) => {
     wx.previewImage({
         current: current,

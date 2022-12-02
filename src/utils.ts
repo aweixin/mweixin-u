@@ -26,10 +26,14 @@ export const gourl = (path: string) => {
             // 网址
             wx.navigateTo({
                   url: `/pages/webview/index?url=${encodeURIComponent(path)}`,
+            }).catch((error: any) => {
+                  console.log(error)
             })
       } else {
             wx.navigateTo({
                   url: path,
+            }).catch((error: any) => {
+                  console.log(error)
             })
       }
 }

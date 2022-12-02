@@ -29,11 +29,15 @@ const gourl = (path) => {
         // 网址
         wx.navigateTo({
             url: `/pages/webview/index?url=${encodeURIComponent(path)}`,
+        }).catch((error) => {
+            console.log(error);
         });
     }
     else {
         wx.navigateTo({
             url: path,
+        }).catch((error) => {
+            console.log(error);
         });
     }
 };

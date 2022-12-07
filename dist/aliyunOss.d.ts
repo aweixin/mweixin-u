@@ -12,6 +12,8 @@ interface ossAuthInfoType {
  * aliyunOss 阿里云oss
  * @param filePath 文件路径
  * @param {ossAuthInfoType} OssAuthInfo
+ * @param path 文件分类 face
+ * @param  fileName 后台接收的字段
  * 示例：
  * ```
      async aliyunOss(filePath: any, path: string) {
@@ -41,5 +43,5 @@ interface ossAuthInfoType {
       })
  * ```
  */
-export declare const aliyunOss: (filePath: string, OssAuthInfo: ossAuthInfoType) => Promise<string>;
+export declare const aliyunOss: (filePath: string, fileName: string | undefined, OssAuthInfo: ossAuthInfoType) => Promise<string>;
 export {};

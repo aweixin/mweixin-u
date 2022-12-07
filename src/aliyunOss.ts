@@ -1,3 +1,10 @@
+/*
+ * @Author: Mr.xu
+ * @Date: 2022-12-07 16:33:31
+ * @LastEditors: Mr.xu
+ * @LastEditTime: 2022-12-07 16:45:01
+ * @Description:
+ */
 import crypto from "crypto-js"
 import { Base64 } from "js-base64"
 interface ossAuthInfoType {
@@ -20,6 +27,8 @@ const computeSignature = (accessKeySecret: string, canonicalString: string) => {
  * aliyunOss 阿里云oss
  * @param filePath 文件路径
  * @param {ossAuthInfoType} OssAuthInfo
+ * @param path 文件分类 face
+ * @param  fileName 后台接收的字段
  * 示例：
  * ```
      async aliyunOss(filePath: any, path: string) {
@@ -49,7 +58,7 @@ const computeSignature = (accessKeySecret: string, canonicalString: string) => {
       })
  * ```
  */
-export const aliyunOss = (filePath: string, OssAuthInfo: ossAuthInfoType) => {
+export const aliyunOss = (filePath: string, fileName: string = "file", OssAuthInfo: ossAuthInfoType) => {
       const date = new Date()
       date.setHours(date.getHours() + 1)
       const policyText = {
@@ -74,7 +83,7 @@ export const aliyunOss = (filePath: string, OssAuthInfo: ossAuthInfoType) => {
                   url: OssAuthInfo.host, // 开发者服务器的URL。
                   filePath: filePath,
                   header: {},
-                  name: "file", // 必须填file。
+                  name: fileName, // 必须填file。
                   formData: formData,
                   success: (res: any) => {
                         // console.log(res);

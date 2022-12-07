@@ -1,6 +1,15 @@
+/*
+ * @Author: Mr.xu
+ * @Date: 2022-12-07 16:33:31
+ * @LastEditors: Mr.xu
+ * @LastEditTime: 2022-12-07 16:54:06
+ * @Description:
+ */
+const app = getApp()
+
 interface optionsType {
       method: "POST" | "GET" | "OPTIONS" | "HEAD" | "PUT" | "DELETE" | "TRACE" | "CONNECT"
-      data: Object
+      data: any
       header?: Object
 }
 
@@ -14,7 +23,18 @@ interface returnType {
 const request = (url: string, options: optionsType) => {
       return new Promise<returnType>((resolve, reject) => {
             let header = {
-                  "content-type": "application/json;charset=utf-8",
+                  "content-type": "application/json",
+            }
+            if (app.setPublic) {
+                  if (app.setPublic instanceof Array) {
+                        const keys = app.setPublic
+                        for (let index = 0; index < keys.length; index++) {
+                              const element = keys[index]
+                              options.data[element] = wx.getStorageSync(element)
+                        }
+                  } else {
+                        console.warn("setPublic is Array")
+                  }
             }
             wx.request({
                   url: url,

@@ -1,11 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.post = exports.get = void 0;
+/*
+ * @Author: Mr.xu
+ * @Date: 2022-12-07 16:33:31
+ * @LastEditors: Mr.xu
+ * @LastEditTime: 2022-12-07 16:54:06
+ * @Description:
+ */
+const app = getApp();
 const request = (url, options) => {
     return new Promise((resolve, reject) => {
         let header = {
-            "content-type": "application/json;charset=utf-8",
+            "content-type": "application/json",
         };
+        if (app.setPublic) {
+            if (app.setPublic instanceof Array) {
+                const keys = app.setPublic;
+                for (let index = 0; index < keys.length; index++) {
+                    const element = keys[index];
+                    options.data[element] = wx.getStorageSync(element);
+                }
+            }
+            else {
+                console.warn("setPublic is Array");
+            }
+        }
         wx.request({
             url: url,
             method: options.method,

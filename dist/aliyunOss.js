@@ -4,6 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.aliyunOss = void 0;
+/*
+ * @Author: Mr.xu
+ * @Date: 2022-12-07 16:33:31
+ * @LastEditors: Mr.xu
+ * @LastEditTime: 2022-12-07 16:45:01
+ * @Description:
+ */
 const crypto_js_1 = __importDefault(require("crypto-js"));
 const js_base64_1 = require("js-base64");
 // 计算签名。
@@ -14,6 +21,8 @@ const computeSignature = (accessKeySecret, canonicalString) => {
  * aliyunOss 阿里云oss
  * @param filePath 文件路径
  * @param {ossAuthInfoType} OssAuthInfo
+ * @param path 文件分类 face
+ * @param  fileName 后台接收的字段
  * 示例：
  * ```
      async aliyunOss(filePath: any, path: string) {
@@ -43,7 +52,7 @@ const computeSignature = (accessKeySecret, canonicalString) => {
       })
  * ```
  */
-const aliyunOss = (filePath, OssAuthInfo) => {
+const aliyunOss = (filePath, fileName = "file", OssAuthInfo) => {
     const date = new Date();
     date.setHours(date.getHours() + 1);
     const policyText = {
@@ -67,7 +76,7 @@ const aliyunOss = (filePath, OssAuthInfo) => {
             url: OssAuthInfo.host,
             filePath: filePath,
             header: {},
-            name: "file",
+            name: fileName,
             formData: formData,
             success: (res) => {
                 // console.log(res);

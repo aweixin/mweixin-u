@@ -1,4 +1,3 @@
-const app = getApp()
 function sequenceTasks(tasks: any[]) {
       //图片上传-顺序处理函数
       //记录返回值
@@ -21,6 +20,7 @@ function sequenceTasks(tasks: any[]) {
  */
 
 export const uploadFile = (tempFilePaths: any) => {
+      const app = getApp()
       if (!app.uploadFile || app.uploadFile == "") {
             throw new Error(`
 缺少上传接口地址

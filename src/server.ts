@@ -5,7 +5,6 @@
  * @LastEditTime: 2022-12-07 16:54:06
  * @Description:
  */
-const app = getApp()
 
 interface optionsType {
       method: "POST" | "GET" | "OPTIONS" | "HEAD" | "PUT" | "DELETE" | "TRACE" | "CONNECT"
@@ -22,6 +21,7 @@ interface returnType {
 
 const request = (url: string, options: optionsType) => {
       return new Promise<returnType>((resolve, reject) => {
+            const app = getApp()
             let header = {
                   "content-type": "application/json",
             }

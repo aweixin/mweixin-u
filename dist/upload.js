@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.chooseMessageFile = exports.chooseImage = exports.uploadFile = void 0;
-const app = getApp();
 function sequenceTasks(tasks) {
     //图片上传-顺序处理函数
     //记录返回值
@@ -23,6 +22,7 @@ function sequenceTasks(tasks) {
  * @param tempFilePaths 本地临时路径 []
  */
 const uploadFile = (tempFilePaths) => {
+    const app = getApp();
     if (!app.uploadFile || app.uploadFile == "") {
         throw new Error(`
 缺少上传接口地址

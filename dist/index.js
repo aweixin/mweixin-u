@@ -1,11 +1,4 @@
 "use strict";
-/*
- * @Author: Mr.xu
- * @Date: 2022-12-01 14:36:24
- * @LastEditors: Mr.xu
- * @LastEditTime: 2022-12-01 14:44:52
- * @Description:微信工具类
- */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -31,6 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.aliyunOss = exports.Utils = exports.Server = exports.Upload = void 0;
+/*
+ * @Author: Mr.xu
+ * @Date: 2022-12-01 14:36:24
+ * @LastEditors: Mr.xu
+ * @LastEditTime: 2022-12-01 14:44:52
+ * @Description:微信工具类
+ */
 // 请求类
 const Server = __importStar(require("./server"));
 exports.Server = Server;

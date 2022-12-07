@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.post = exports.get = void 0;
 /*
  * @Author: Mr.xu
  * @Date: 2022-12-07 16:33:31
@@ -8,9 +6,11 @@ exports.post = exports.get = void 0;
  * @LastEditTime: 2022-12-07 16:54:06
  * @Description:
  */
-const app = getApp();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.post = exports.get = void 0;
 const request = (url, options) => {
     return new Promise((resolve, reject) => {
+        const app = getApp();
         let header = {
             "content-type": "application/json",
         };

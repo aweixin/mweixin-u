@@ -14,18 +14,20 @@ const request = (url, options) => {
         let header = {
             "content-type": "application/json",
         };
+        let options_data = {};
         if (app.setPublic) {
             if (app.setPublic instanceof Array) {
                 const keys = app.setPublic;
                 for (let index = 0; index < keys.length; index++) {
                     const element = keys[index];
-                    options.data[element] = wx.getStorageSync(element);
+                    options_data[element] = wx.getStorageSync(element);
                 }
             }
             else {
                 console.warn("setPublic is Array");
             }
         }
+        options.data = Object.assign(options_data, options.data);
         wx.request({
             url: url,
             method: options.method,

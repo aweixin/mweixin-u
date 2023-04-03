@@ -1,1 +1,8 @@
 node_modules/
+
+# 操作流程
+# 打包后提交代码
+# 获取最新版本号
+# npm version patch  
+# 提交代码
+# npm publish

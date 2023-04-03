@@ -217,12 +217,12 @@ export const delsys_expire = (key: string) => {
 /**
  * 需要预览的图片
  * @param current 当前预览的图片
- * @param urls 所有图片
+ * @param urls 所有图片 不存在就是 当前预览图片
  */
-export const previewImage = (current: string, urls: string[]) => {
+export const previewImage = (current: string, urls?: string[]) => {
       wx.previewImage({
             current: current, // 当前显示图片的 http 链接
-            urls: urls, // 需要预览的图片 http 链接列表
+            urls: urls ? urls : [current], // 需要预览的图片 http 链接列表
       })
 }
 

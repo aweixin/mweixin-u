@@ -4,7 +4,8 @@
       "description": "微信工具库",
       "main": "dist/index.js",
       "scripts": {
-            "test": "echo \"Error: no test specified\" && exit 1"
+            "dev": "tsc -w",
+            "build": "tsc"
       },
       "files": [
             "dist"

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setClipboardData = exports.urlEncode = exports.checkUpdateVersion = exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys_expire = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
+exports.decodeURI = exports.setClipboardData = exports.urlEncode = exports.checkUpdateVersion = exports.openDocument = exports.requestSubscribeMessage = exports.previewImage = exports.delsys_expire = exports.delsys = exports.setsys = exports.getsys = exports.confirm = exports.msg = exports.alert = exports.checkFullSucreen = exports.getRect = exports.tapinfo = exports.get_html = exports.gourl = exports.formatTime = void 0;
 const moment_1 = __importDefault(require("moment"));
 const formatTime = (date) => {
     const current_date = new Date(date.replace(/-/g, "/"));
@@ -321,3 +321,12 @@ const setClipboardData = (data, title) => {
     });
 };
 exports.setClipboardData = setClipboardData;
+/**
+ * URL 解码
+ * @param {string} url encodeURIComponent 编码后的URL
+ * @return {*}  返回解码后的URL
+ */
+const decodeURI = (url) => {
+    return decodeURIComponent(url);
+};
+exports.decodeURI = decodeURI;

@@ -328,3 +328,12 @@ export const setClipboardData = (data: string, title?: string) => {
             },
       })
 }
+
+/**
+ * URL 解码
+ * @param {string} url encodeURIComponent 编码后的URL
+ * @return {*}  返回解码后的URL
+ */
+export const decodeURI = (url: string) => {
+      return decodeURIComponent(url)
+}

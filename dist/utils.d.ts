@@ -96,4 +96,10 @@ export declare const urlEncode: (data?: object) => string;
  * @param {*} title  提示内容
  */
 export declare const setClipboardData: (data: string, title?: string) => void;
+/**
+ * URL 解码
+ * @param {string} url encodeURIComponent 编码后的URL
+ * @return {*}  返回解码后的URL
+ */
+export declare const decodeURI: (url: string) => string;
 export {};
